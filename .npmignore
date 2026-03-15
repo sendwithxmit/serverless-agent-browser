@@ -1,0 +1,9 @@
+src/
+tests/
+examples/
+scripts/
+tsconfig*.json
+.github/
+.git/
+build/test/
+*.tgz

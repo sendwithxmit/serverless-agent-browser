@@ -1,22 +1,33 @@
 {
-  "name": "@lightpanda/serverless",
+  "name": "@sendwithxmit/serverless-agent-browser",
   "version": "0.1.0",
-  "description": "Lightpanda headless browser binary for serverless platforms (AWS Lambda, Vercel, etc.)",
+  "description": "Serverless headless browser with built-in crawler. BFS/DFS traversal, sitemap discovery, robots.txt compliance. Powered by Lightpanda.",
   "keywords": [
     "aws",
     "browser",
+    "crawler",
     "headless",
     "lambda",
     "lightpanda",
     "puppeteer",
     "playwright",
+    "scraper",
     "serverless",
+    "sitemap",
     "vercel"
   ],
-  "homepage": "https://github.com/lightpanda-io/browser",
+  "homepage": "https://github.com/sendwithxmit/lightpanda-serverless",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sendwithxmit/lightpanda-serverless.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sendwithxmit/lightpanda-serverless/issues"
+  },
   "license": "AGPL-3.0",
+  "author": "sendwithxmit",
   "type": "module",
-  "main": "./build/cjs/index.cjs",
+  "main": "./build/cjs/index.js",
   "module": "./build/esm/index.js",
   "exports": {
     ".": {
@@ -27,7 +38,7 @@
       },
       "require": {
         "types": "./build/cjs/index.d.ts",
-        "default": "./build/cjs/index.cjs"
+        "default": "./build/cjs/index.js"
       }
     },
     "./crawler": {
@@ -38,22 +49,24 @@
       },
       "require": {
         "types": "./build/cjs/crawler/index.d.ts",
-        "default": "./build/cjs/crawler/index.cjs"
+        "default": "./build/cjs/crawler/index.js"
       }
     }
   },
   "types": "./build/esm/index.d.ts",
   "files": [
     "bin",
-    "build"
+    "build",
+    "LICENSE"
   ],
   "scripts": {
-    "build": "npm run build:esm && npm run build:cjs",
+    "build": "npm run build:esm && npm run build:cjs && npm run build:cjs-pkg",
     "build:esm": "tsc -p tsconfig.build.json",
     "build:cjs": "tsc -p tsconfig.cjs.json",
     "prepare-binary": "node scripts/prepare-binary.mjs",
     "prepublishOnly": "npm run build",
-    "test": "npx tsc -p tsconfig.test.json && node build/test/tests/run.js"
+    "test": "tsc -p tsconfig.test.json && node build/test/tests/run.js",
+    "build:cjs-pkg": "echo {\"type\":\"commonjs\"} > build/cjs/package.json"
   },
   "devDependencies": {
     "@types/node": "^20.11.0",
