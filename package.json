@@ -1,6 +1,6 @@
 {
   "name": "@sendwithxmit/serverless-agent-browser",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Serverless headless browser with built-in crawler. BFS/DFS traversal, sitemap discovery, robots.txt compliance. Powered by Lightpanda.",
   "keywords": [
     "aws",
@@ -56,7 +56,8 @@
   "types": "./build/esm/index.d.ts",
   "files": [
     "bin",
-    "build",
+    "build/esm",
+    "build/cjs",
     "LICENSE"
   ],
   "scripts": {
